@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Back End Assessment</title>
+  </head>
+  <body class="container">
+      <div>
+          <button id="complimentButton">Get a compliment</button>
+          <button id="fortuneButton">Get a fortune!</button>
+          <button id="starwarsButton">Get a Star Wars Character!</button>
+      </div>
+
+        <div id="starWarsContainer"></div>
+
+        <div>
+            <form id="journalForm">
+                <input id="entry" type="text" placeholder="What's on your mind?"/>
+                <button type="submit">Add Journal Entry</button>
+            </form>
+        </div>
+
+        <div id="journalContainer"></div>
+
+        <div>
+            <form id="weatherForm">
+                <input type="text" name="city" id="city" placeholder="What city would you like to see the weather?">
+                <button type="submit">Find the weather details!</button>
+            </form>
+        </div>
+
+        <div id="weatherContainer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
