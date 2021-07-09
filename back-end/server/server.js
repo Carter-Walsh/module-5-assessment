@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const { compliment, fortune, journalEntry, getWeather } = require("./controller/control");
+require("dotenv").config({path: "../../.env"});
 
 const app = express();
 
