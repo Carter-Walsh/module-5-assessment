@@ -56,19 +56,17 @@ journalForm.onsubmit = (event) => {
 
 weatherForm.onsubmit = (event) => {
     event.preventDefault();
-
     let city = document.getElementById("city");
-    
-    axios.get(`api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=apikey`)
+
+    axios.get(`${baseURL}/weather/${city.value}`)
         .then(res => {
-            console.log(res.data);
-            displayWeather(res.data.weather.description);
+            displayWeather(res.data);
         })
         .catch(err => {
             console.log({error: err});
         });
 
-        city.value = "";
+    city.value = ""; 
 }
 
 const randomNumber = () => {
@@ -88,7 +86,8 @@ const displayJournalEntry = (entry) => {
 };
 
 const displayWeather = (weather) => {
+    let description = weather.weather[0].description;
     const weatherEntry = document.createElement("div");
-    weatherEntry.innerHTML = `<h2>${weather}</h2>`
+    weatherEntry.innerHTML = `<h2>${description}</h2>`
     weatherContainer.appendChild(weatherEntry);
 };

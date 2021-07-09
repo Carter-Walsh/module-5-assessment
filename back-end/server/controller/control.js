@@ -1,6 +1,5 @@
-const randomNumber = (arr) => {
-    return Math.floor(Math.random() * arr.length);
-}
+const axios = require("axios");
+require("dotenv").config({path: "../../../.env"});
 
 module.exports = {
     compliment: (req, res) => {
@@ -30,6 +29,20 @@ module.exports = {
     journalEntry: (req, res) => {
         const newEntry = req.body.entry;
         res.status(200).send(newEntry);
+    },
+    getWeather: (req, res) => {
+        let city = req.params.city;
+        axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b825a4c3bc1dad5c4c633a3c8d45bdee`)
+        .then(response => {
+            res.status(200).send(response.data);
+        })
+        .catch(err => {
+            console.log({error: err});
+            res.status(400).send("Could not find the data you were looking for");
+        });
     }
 }
 
+const randomNumber = (arr) => {
+    return Math.floor(Math.random() * arr.length);
+}
